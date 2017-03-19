@@ -1,4 +1,4 @@
-package br.com.ruavarejo.backend.login;
+package br.com.ruavarejo.backend.domains;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,18 +8,22 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "restricted_login")
-public class RestrictedLogin {
+@Table(name = "domain")
+public class Domain {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
-	@Column(name = "username", unique = true, nullable = false)
-	private String username;
+	@Column(name = "domain", length = 100, nullable = false, unique = true)
+	private String domain;
+	
+	@Deprecated
+	public Domain(){
+	}
 
-	public RestrictedLogin(long id, String username) {
+	public Domain(long id, String domain) {
 		this.id = id;
-		this.username = username;
+		this.domain = domain;
 	}
 
 	public long getId() {
@@ -30,12 +34,12 @@ public class RestrictedLogin {
 		this.id = id;
 	}
 
-	public String getUsername() {
-		return username;
+	public String getDomain() {
+		return domain;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setDomain(String domain) {
+		this.domain = domain;
 	}
-
+	
 }
