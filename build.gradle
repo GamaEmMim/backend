@@ -1,0 +1,84 @@
+apply plugin: 'eclipse'
+apply plugin: 'spring-boot'
+apply plugin: 'application'
+apply plugin: 'maven'
+
+mainClassName = 'br.com.ruavarejo.backend.BackEndApplication'
+version = version
+group = 'br.com.ruavarejo.backend'
+
+compileJava.options.encoding = 'UTF-8'
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+archivesBaseName = 'backend'
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.3.5.RELEASE'
+    }
+}
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+configurations {
+    compile.exclude module: 'spring-boot-starter-logging'
+    compile.exclude module: "spring-boot-starter-tomcat"
+}
+
+dependencies {
+    compile 'org.springframework.boot:spring-boot-starter-web'
+    compile 'org.springframework.boot:spring-boot-starter-data-jpa'
+    compile 'org.springframework.boot:spring-boot-starter-log4j'
+    compile 'org.springframework:spring-webmvc'
+    compile 'org.springframework.boot:spring-boot-starter-undertow'
+    compile 'org.mortbay.jetty.alpn:alpn-boot:8.1.5.v20150921'
+    compile 'mysql:mysql-connector-java'
+    compile 'org.springframework.security:spring-security-web'
+    compile 'org.springframework.security:spring-security-config'
+    compile 'io.jsonwebtoken:jjwt:0.6.0'
+    compile 'org.springframework.boot:spring-boot-devtools'
+    compile 'org.mindrot:jbcrypt:0.3m'
+    compile 'org.apache.commons:commons-lang3:3.4'
+    compile 'org.jsoup:jsoup:1.9.1'
+    compile 'org.glassfish.jersey.core:jersey-client:2.23'
+	compile 'org.glassfish.jersey.media:jersey-media-moxy:2.22.2'
+	compile 'org.glassfish.jersey.media:jersey-media-json-jackson:2.23'
+	compile 'com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider:2.7.4'
+	compile 'org.hibernate:hibernate-search-orm:4.5.3.Final'
+    compile 'com.fasterxml.jackson.datatype:jackson-datatype-hibernate4:2.8.0.rc1'
+    compile 'org.json:json:20160810'
+    compile 'org.hibernate:hibernate-java8:5.2.2.Final'
+    
+    
+	
+	//Social Dependencies
+	compile 'org.springframework.social:spring-social-core:1.1.4.RELEASE'
+	compile 'org.springframework.social:spring-social-web:1.1.4.RELEASE'
+	compile 'org.springframework.social:spring-social-config:1.1.4.RELEASE'
+	compile 'org.springframework.social:spring-social-security:1.1.4.RELEASE'
+	compile 'org.springframework.social:spring-social-facebook:2.0.3.RELEASE'
+	
+	//Mail delivery dependencies
+	compile 'org.apache.commons:commons-email:1.4'
+	
+    // Tests
+    compile 'org.springframework:spring-test'
+    compile 'junit:junit'
+    compile 'org.mockito:mockito-all:1.8.4'
+    compile 'org.hamcrest:hamcrest-all:1.3'
+}
+
+task(runWeb, dependsOn: 'classes', type: JavaExec) {
+    main = 'br.com.ruavarejo.backend.BackEndApplication'
+    
+    classpath = sourceSets.main.runtimeClasspath
+    jvmArgs = ["-Xdebug", "-Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=9999"]
+}

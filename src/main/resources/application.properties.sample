@@ -1,0 +1,15 @@
+env=dev
+
+db.url=jdbc:mysql://localhost:3306/<database>?useSSL=false
+db.username=<username>
+db.password=<password>
+db.driver=com.mysql.jdbc.Driver
+
+hibernate.show_sql=true
+hibernate.search.lucene.indexes=/var/lucene/indexes/
+
+security.basic.enabled=false
+#server.ssl.key-store=
+#server.ssl.key-store-password=
+#server.ssl.keyStoreType=PKCS12
+#server.ssl.keyAlias=
