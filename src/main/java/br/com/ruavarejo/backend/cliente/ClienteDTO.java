@@ -8,12 +8,16 @@ public class ClienteDTO {
 	private String email;
 
 	private TipoComercio tipoComercio;
-	
+
 	public ClienteDTO(String name, String lastName, String email, TipoComercio tipoComercio) {
 		this.name = name;
 		this.lastName = lastName;
 		this.email = email;
 		this.tipoComercio = tipoComercio;
+	}
+	
+	@Deprecated
+	public ClienteDTO(){
 	}
 
 	public String getName() {

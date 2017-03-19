@@ -58,7 +58,7 @@ public class Cliente {
 	
 	public TipoCliente defineTipoCliente(){
 		TipoCliente result;
-		if (getTipoComercio().equals(TipoComercio.OUTROS)){
+		if (this.getTipoComercio().equals(TipoComercio.OUTROS)){
 			result = TipoCliente.LEAD_INVALIDO;
 		}else{
 			result = TipoCliente.LEAD_INVALIDO;
@@ -118,7 +118,7 @@ public class Cliente {
 		return tipoCliente;
 	}
 
-	public void setClienteType(TipoCliente tipoCliente) {
+	public void setTipoCliente(TipoCliente tipoCliente) {
 		this.tipoCliente = tipoCliente;
 	}
 }
