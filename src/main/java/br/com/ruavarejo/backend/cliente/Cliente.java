@@ -42,7 +42,20 @@ public class Cliente {
 	@Enumerated(EnumType.STRING)
 	@Column(name="tipo_cliente", length = 40, nullable = false)
 	private TipoCliente tipoCliente;
+	
+	@Column(name = "ip")
+	private String ip;
 
+	public Cliente(String name, String lastName, String email, TipoComercio tipoComercio, String ip) {
+		this.name = name;
+		this.lastName = lastName;
+		this.email = email;
+		this.tipoComercio = tipoComercio;
+		this.creationDate = new Date();
+		this.ip = ip;
+		this.defineTipoCliente();
+	}
+	
 	public Cliente(String name, String lastName, String email, TipoComercio tipoComercio) {
 		this.name = name;
 		this.lastName = lastName;
@@ -120,5 +133,13 @@ public class Cliente {
 
 	public void setTipoCliente(TipoCliente tipoCliente) {
 		this.tipoCliente = tipoCliente;
+	}
+
+	public String getIp() {
+		return ip;
+	}
+
+	public void setIp(String ip) {
+		this.ip = ip;
 	}
 }

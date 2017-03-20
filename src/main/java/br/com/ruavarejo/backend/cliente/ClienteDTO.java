@@ -8,6 +8,8 @@ public class ClienteDTO {
 	private String email;
 
 	private TipoComercio tipoComercio;
+	
+	private String ip;
 
 	public ClienteDTO(String name, String lastName, String email, TipoComercio tipoComercio) {
 		this.name = name;
@@ -50,5 +52,13 @@ public class ClienteDTO {
 	
 	public void setTipoComercio(TipoComercio tipoComercio){
 		this.tipoComercio = tipoComercio;
+	}
+	
+	public String getIp() {
+		return ip;
+	}
+
+	public void setIp(String ip) {
+		this.ip = ip;
 	}
 }
