@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.ruavarejo.backend.annotation.Post;
 import br.com.ruavarejo.backend.exceptions.EmailAlreadyInUseException;
+import br.com.ruavarejo.backend.security.UserInfo;
 
 @RestController
 public class ClienteController {
@@ -17,18 +18,19 @@ public class ClienteController {
 	@Autowired
 	private ClienteRepository clienteRepository;
 	
+	@Autowired
+	private UserInfo userInfo;
+	
 	@Post("/cliente")
-	public boolean signIn(@Valid @RequestBody ClienteDTO clienteDTO){
+	public Cliente signIn(@Valid @RequestBody ClienteDTO clienteDTO){
+		clienteDTO.setIp(userInfo.getIpAddress());
 		Cliente cliente = clienteConverter.convert(clienteDTO);
 		if (clienteRepository.findByEmail(clienteDTO.getEmail()).isPresent()){
 			throw new EmailAlreadyInUseException();
 		}
-		try{
-			clienteRepository.save(cliente);
-			return true;
-		}catch(Exception e){
-			return false;
-		}
+		
+		Cliente cli = clienteRepository.save(cliente);
+		return cli;
 	}
 
 }
