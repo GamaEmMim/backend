@@ -16,10 +16,9 @@ public class ClienteDTOToClienteConverter implements Converter<ClienteDTO, Clien
 	public Cliente convert(ClienteDTO source) {
 		Cliente cliente = new Cliente(source.getName(), source.getLastName(), 
 										source.getEmail(), source.getTipoComercio());
-		/*if (source.getTipoComercio() == TipoComercio.OUTROS){
-			cliente.setTipoCliente(TipoCliente.LEAD_INVALIDO);
-			return cliente;
-		}*/
+		
+		cliente.setIp(source.getIp());
+
 		if (domainService.isFreeEmailService(source.getEmail())){
 			cliente.setTipoCliente(TipoCliente.B2C);
 		}else{

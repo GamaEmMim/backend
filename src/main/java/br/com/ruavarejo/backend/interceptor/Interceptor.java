@@ -9,20 +9,15 @@ import static org.springframework.http.HttpHeaders.CONTENT_TYPE;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import br.com.ruavarejo.backend.annotation.WebComponent;
-import br.com.ruavarejo.backend.security.UserInfo;
 
 @WebComponent
 public class Interceptor extends HandlerInterceptorAdapter {
-	@Autowired
-	private UserInfo userInfo;
 	
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-		userInfo.setIpAddress(request.getHeader("X-FORWARDED-FOR"));
 		prepareResponseHeader(response);
 		return true;
 	}
