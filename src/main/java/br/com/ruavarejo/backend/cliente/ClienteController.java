@@ -19,15 +19,15 @@ public class ClienteController {
 	private ClienteRepository clienteRepository;
 	
 	@Post("/cliente")
-	public Cliente signIn(HttpServletRequest request, @Valid @RequestBody ClienteDTO clienteDTO){
+	public boolean signIn(HttpServletRequest request, @Valid @RequestBody ClienteDTO clienteDTO){
 		clienteDTO.setIp(request.getRemoteAddr());
 		Cliente cliente = clienteConverter.convert(clienteDTO);
 		if (clienteRepository.findByEmail(clienteDTO.getEmail()).isPresent()){
 			throw new EmailAlreadyInUseException();
 		}
 		
-		Cliente cli = clienteRepository.save(cliente);
-		return cli;
+		clienteRepository.save(cliente);
+		return true;
 	}
 
 }
