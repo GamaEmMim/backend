@@ -12,6 +12,8 @@ public class PesquisaDTOToPesquisaConverter implements Converter<PesquisaDTO, Pe
 		Pesquisa pesquisa = new Pesquisa();
 		pesquisa.setIp(source.getIp());
 		pesquisa.setName(source.getName());
+		pesquisa.setLastName(source.getLastName());
+		pesquisa.setTipoComercio(source.getTipoComercio());
 		pesquisa.setEmail(source.getEmail());
 		pesquisa.setCompany(source.getCompany());
 		pesquisa.setConheceVarejo(source.isConheceVarejo());

@@ -13,6 +13,8 @@ import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.NotBlank;
 
+import br.com.ruavarejo.backend.cliente.TipoComercio;
+
 @Entity
 @Table(name = "pesquisa")
 public class Pesquisa {
@@ -29,6 +31,14 @@ public class Pesquisa {
 	@NotBlank
 	@Column(name = "name", length = 100, nullable = false)
 	private String name;
+	
+	@NotBlank
+	@Column(name="last_name", length = 100, nullable = false)
+	private String lastName;
+	
+	@Enumerated(EnumType.STRING)
+	@Column(name="tipo_comercio", length = 40, nullable = false)
+	private TipoComercio tipoComercio;
 	
 	@NotBlank
 	@Column(name="email", length = 100, nullable = false, unique = true)
@@ -98,6 +108,22 @@ public class Pesquisa {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public TipoComercio getTipoComercio() {
+		return tipoComercio;
+	}
+
+	public void setTipoComercio(TipoComercio tipoComercio) {
+		this.tipoComercio = tipoComercio;
 	}
 
 	public String getEmail() {
