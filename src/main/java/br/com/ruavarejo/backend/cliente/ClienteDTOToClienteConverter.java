@@ -14,10 +14,12 @@ public class ClienteDTOToClienteConverter implements Converter<ClienteDTO, Clien
 
 	@Override
 	public Cliente convert(ClienteDTO source) {
-		Cliente cliente = new Cliente(source.getName(), source.getLastName(), 
-										source.getEmail(), source.getTipoComercio());
-		
-		cliente.setIp(source.getIp());
+		Cliente cliente = new Cliente(source.getName(), 
+										source.getLastName(), 
+										source.getEmail(), 
+										source.getCompany(), 
+										source.getTipoComercio(), 
+										source.getIp());
 
 		if (domainService.isFreeEmailService(source.getEmail())){
 			cliente.setTipoCliente(TipoCliente.B2C);
