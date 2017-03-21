@@ -35,6 +35,9 @@ public class Cliente {
 	@Column(name="email", length = 100, nullable = false, unique = true)
 	private String email;
 	
+	@Column(name="company", length = 100)
+	private String company;
+	
 	@Enumerated(EnumType.STRING)
 	@Column(name="tipo_comercio", length = 40, nullable = false)
 	private TipoComercio tipoComercio;
@@ -46,14 +49,14 @@ public class Cliente {
 	@Column(name = "ip")
 	private String ip;
 
-	public Cliente(String name, String lastName, String email, TipoComercio tipoComercio, String ip) {
+	public Cliente(String name, String lastName, String email, String company, TipoComercio tipoComercio, String ip) {
 		this.name = name;
 		this.lastName = lastName;
 		this.email = email;
+		this.company = company;
 		this.tipoComercio = tipoComercio;
 		this.creationDate = new Date();
 		this.ip = ip;
-		this.defineTipoCliente();
 	}
 	
 	public Cliente(String name, String lastName, String email, TipoComercio tipoComercio) {
@@ -62,21 +65,10 @@ public class Cliente {
 		this.email = email;
 		this.tipoComercio = tipoComercio;
 		this.creationDate = new Date();
-		this.defineTipoCliente();
 	}
 	
 	@Deprecated
 	public Cliente(){
-	}
-	
-	public TipoCliente defineTipoCliente(){
-		TipoCliente result;
-		if (this.getTipoComercio().equals(TipoComercio.OUTROS)){
-			result = TipoCliente.LEAD_INVALIDO;
-		}else{
-			result = TipoCliente.LEAD_INVALIDO;
-		}
-		return result;
 	}
 	
 	public long getId() {
@@ -117,6 +109,14 @@ public class Cliente {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getCompany() {
+		return company;
+	}
+
+	public void setCompany(String company) {
+		this.company = company;
 	}
 
 	public TipoComercio getTipoComercio() {

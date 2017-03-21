@@ -6,14 +6,17 @@ public class ClienteDTO {
 	private String lastName;
 	
 	private String email;
+	
+	private String company;
 
 	private TipoComercio tipoComercio;
 	
 	private String ip;
 
-	public ClienteDTO(String name, String lastName, String email, TipoComercio tipoComercio) {
+	public ClienteDTO(String name, String lastName, String email, String company, TipoComercio tipoComercio) {
 		this.name = name;
 		this.lastName = lastName;
+		this.company = company;
 		this.email = email;
 		this.tipoComercio = tipoComercio;
 	}
@@ -46,6 +49,14 @@ public class ClienteDTO {
 		this.email = email;
 	}
 	
+	public String getCompany() {
+		return company;
+	}
+
+	public void setCompany(String company) {
+		this.company = company;
+	}
+
 	public TipoComercio getTipoComercio(){
 		return tipoComercio;
 	}

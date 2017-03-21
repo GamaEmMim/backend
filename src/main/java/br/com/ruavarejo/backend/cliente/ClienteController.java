@@ -25,7 +25,6 @@ public class ClienteController {
 		if (clienteRepository.findByEmail(clienteDTO.getEmail()).isPresent()){
 			throw new EmailAlreadyInUseException();
 		}
-		
 		clienteRepository.save(cliente);
 		return true;
 	}
