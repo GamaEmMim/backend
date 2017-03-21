@@ -1,9 +1,15 @@
 package br.com.ruavarejo.backend.pesquisa;
 
+import br.com.ruavarejo.backend.cliente.TipoComercio;
+
 public class PesquisaDTO {
 	private String ip;
 	
 	private String name;
+	
+	private String lastName;
+	
+	private TipoComercio tipoComercio;
 	
 	private String email;
 	
@@ -42,6 +48,22 @@ public class PesquisaDTO {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public TipoComercio getTipoComercio() {
+		return tipoComercio;
+	}
+
+	public void setTipoComercio(TipoComercio tipoComercio) {
+		this.tipoComercio = tipoComercio;
 	}
 
 	public String getEmail() {
