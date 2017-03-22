@@ -1,24 +1,13 @@
-package br.com.ruavarejo.backend.contato;
+package br.com.ruavarejo.backend.email;
 
-import org.hibernate.validator.constraints.NotBlank;
-
-public class ContatoDTO {
-	@NotBlank
+public class MessageDTO {
 	private String name;
-	@NotBlank
 	private String lastName;
 	private String company;
-	@NotBlank
 	private String email;
-	@NotBlank
 	private String message;
 	
-	@Deprecated
-	public ContatoDTO(){
-	}
-	
-	public String getFullName(){
-		return name + " " + lastName;
+	public MessageDTO(){
 	}
 	
 	public String getName() {
@@ -51,5 +40,6 @@ public class ContatoDTO {
 	public void setMessage(String message) {
 		this.message = message;
 	}
+	
 	
 }
